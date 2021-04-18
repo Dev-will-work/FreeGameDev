@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - project/"Stable project"/
+          - project/Stable project/
         testMode:
           - playmode
           - editmode
@@ -68,7 +68,7 @@ jobs:
           lfs: true
       - uses: actions/cache@v2
         with:
-          path: project/"Stable project"/Library
+          path: project/Stable project/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
