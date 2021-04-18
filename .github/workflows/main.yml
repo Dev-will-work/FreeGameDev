@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - "/home/runner/work/FreeGameDev/FreeGameDev/project/Stable project"
+          - /home/runner/work/FreeGameDev/FreeGameDev/project/"Stable project"
         testMode:
           #- playmode
           - editmode
