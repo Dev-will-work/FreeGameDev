@@ -29,12 +29,9 @@ jobs:
         run: |
           echo -e "level 1\n"
           ls
-          cd project
+          cd project/Stable project
            echo -e "level 2\n"
           ls 
-          cd "Stable project"
-           echo -e "level 3\n"
-          ls
       - uses: actions/cache@v2
         with:
           path: ${{ matrix.projectPath }}/Library
