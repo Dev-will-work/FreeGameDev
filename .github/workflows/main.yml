@@ -29,8 +29,8 @@ jobs:
         run: |
           echo -e "level 1\n"
           ls
-          echo "where README"
-          where README.md
+          echo "full path:"
+          pwd
           cd "project/Stable project"
            echo -e "level 2\n"
           ls 
