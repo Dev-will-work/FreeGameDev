@@ -78,9 +78,9 @@ jobs:
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
         env:
-          unityVersion: 2019.4.20f1
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          unityVersion: 2019.4.20f1
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v2
         with:
