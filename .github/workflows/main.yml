@@ -1,7 +1,7 @@
 name: Test project
 
 on: 
-  [push, pull_request]
+  [pull_request]
   #push: 
   #  branches: [develop]
   #pull_request:
@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - test-project
+          - project/Stable_project
         testMode:
           - playmode
           - editmode
@@ -60,7 +60,7 @@ jobs:
           - StandaloneLinux64 # Build a Linux 64-bit standalone.
           #- iOS # Build an iOS player.
           #- Android # Build an Android .apk standalone app.
-          - WebGL # WebGL.
+          #- WebGL # WebGL.
     steps:
       - uses: actions/checkout@v2
         with:
@@ -68,13 +68,14 @@ jobs:
           lfs: true
       - uses: actions/cache@v2
         with:
-          path: Library
+          path: project/Stable_project/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
       - uses: game-ci/unity-builder@v2
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
+          unityVersion: 2019.4.20f1
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v2
         with:
