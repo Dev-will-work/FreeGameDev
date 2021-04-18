@@ -17,7 +17,7 @@ jobs:
       fail-fast: false
       matrix:
         projectPath:
-          - project/Stable project
+          - "project/Stable project"
         testMode:
           #- playmode
           - editmode
@@ -29,7 +29,7 @@ jobs:
         run: |
           echo -e "level 1\n"
           ls
-          cd project/Stable project
+          cd "project/Stable project"
            echo -e "level 2\n"
           ls 
       - uses: actions/cache@v2
