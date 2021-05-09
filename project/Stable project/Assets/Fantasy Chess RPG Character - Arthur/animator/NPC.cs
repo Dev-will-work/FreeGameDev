@@ -26,7 +26,7 @@ public class NPC : MonoBehaviour
         distance = Vector3.Distance(player.transform.position, transform.position);
 
        
-         if (distance < radius && distance > nav.stoppingDistance)
+         if (distance < radius && distance >= nav.stoppingDistance)
         {
             if (distance > radius - k)
             {
@@ -47,7 +47,7 @@ public class NPC : MonoBehaviour
             gameObject.GetComponent<Animator>().SetTrigger("Idle");
         }
 
-        if (distance <= nav.stoppingDistance)
+        if (distance < nav.stoppingDistance)
         {
             nav.enabled = true;
             gameObject.GetComponent<Animator>().SetTrigger("Attack");
