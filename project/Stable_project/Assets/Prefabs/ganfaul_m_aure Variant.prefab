@@ -192,6 +192,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxGroundDistance: 0.3
   isGrounded: 0
+--- !u!114 &1401285592170304031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317523635664488742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b695eed3b91d8524387878663c8bb3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  max_x: 2500
+  max_y: 650
+  max_z: 2500
+  min_x: 0
+  min_y: 0
+  min_z: 0
 --- !u!1001 &9199919987865662583
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 71c9614007df61a4ab76f43127810e04,
         type: 3}
       propertyPath: m_Name
-      value: ganfaul_m_aure
+      value: ganfaul_m_aure Variant
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 71c9614007df61a4ab76f43127810e04,
         type: 3}
