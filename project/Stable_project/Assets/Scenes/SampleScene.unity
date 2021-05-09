@@ -38,8 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+<<<<<<< HEAD:project/Stable_project/Assets/Scenes/SampleScene.unity
   m_IndirectSpecularColor: {r: 0.39622465, g: 0.43436074, b: 0.4992919, a: 1}
 0f5fc9013565bb945d0555b1fabcdd19db12b520:project/Stable_project/Assets/Scenes/SampleScene.unity
+=======
+  m_IndirectSpecularColor: {r: 0.45110643, g: 0.5009094, b: 0.5740386, a: 1}
+>>>>>>> 7b3991aeac1de9e65927b8be81856d6942a28ee7:project/Stable project/Assets/Scenes/SampleScene.unity
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
