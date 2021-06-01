@@ -5,25 +5,25 @@ using UnityEngine.AI;
 
 public class NPC : MonoBehaviour
 {
-    public GameObject player;
-    public float distance;
+    //public GameObject player;
+// public float distance;
     public Quaternion angle;
     NavMeshAgent nav;
     public float radius = 40;
+    //public PlayerManager hero;
    // Renderer rend;
 
     // Start is called before the first frame update
     void Start()
     {
         nav = GetComponent<NavMeshAgent>();
-       // rend = GetComponent<Renderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         float k = 10.0f;
-        distance = Vector3.Distance(player.transform.position, transform.position);
+        float distance = Vector3.Distance(GameObject.Find("PlayerManager(Clone)").GetComponent<PlayerManager>().controller.transform.position, transform.position);
 
        
          if (distance < radius && distance >= nav.stoppingDistance)
