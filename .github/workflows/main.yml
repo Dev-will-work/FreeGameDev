@@ -76,7 +76,7 @@ jobs:
           path: project/Stable_project/Library
           key: Library-${{ matrix.targetPlatform }}
           restore-keys: Library-
-      - uses: game-ci/unity-builder@v2
+      - uses: game-ci/unity-builder@v2.0-alpha-10
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
