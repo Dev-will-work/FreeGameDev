@@ -35,7 +35,7 @@ public class PersonControllerScript : MonoBehaviour
 
 
     // Update is called once per frame
-    private void Update()
+    private void FixedUpdate()
     {
         if (PV.IsMine)
         {
