@@ -128,4 +128,12 @@ public class Launcher : MonoBehaviourPunCallbacks
 	{
 		Instantiate(PlayerListItemPrefab, playerListContent).GetComponent<PlayerListItem>().SetUp(newPlayer);
 	}
+
+		public void QuitGame() {
+#if UNITY_EDITOR
+    UnityEditor.EditorApplication.isPlaying = false;
+#else
+				Application.Quit();
+#endif
+		}
 }
