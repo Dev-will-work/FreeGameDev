@@ -16,7 +16,7 @@ public class Walles : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (this.transform.position.x > max_x)
             this.transform.position = new Vector3(max_x, this.transform.position.y, this.transform.position.z);
