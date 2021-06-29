@@ -1,4 +1,5 @@
 using UnityEngine;
+using Photon.Pun;
 
 public class Crouch : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class Crouch : MonoBehaviour
     public Transform head;
     [HideInInspector]
     public float defaultHeadYLocalPosition;
+
+    PhotonView PV;
 
     [Tooltip("Capsule collider to lower when we crouch.\nCan be empty.")]
     public CapsuleCollider capsuleCollider;
@@ -19,6 +22,10 @@ public class Crouch : MonoBehaviour
     public bool IsCrouched { get; private set; }
     public event System.Action CrouchStart, CrouchEnd;
 
+    void Awake()
+    {
+        PV = GetComponent<PhotonView>();
+    }
 
     void Reset()
     {
@@ -41,40 +48,43 @@ public class Crouch : MonoBehaviour
 
     void LateUpdate()
     {
-        if (IsKeyPressed(keys))
+        if (PV.IsMine)
         {
-            // Enforce crouched y local position of the head.
-            head.localPosition = new Vector3(head.localPosition.x, crouchYLocalPosition, head.localPosition.z);
-
-            // Lower the capsule collider.
-            if (capsuleCollider)
+            if (IsKeyPressed(keys))
             {
-                capsuleCollider.height = defaultCapsuleColliderHeight - (defaultHeadYLocalPosition - crouchYLocalPosition);
-                capsuleCollider.center = Vector3.up * capsuleCollider.height * .5f;
-            }
+                // Enforce crouched y local position of the head.
+                head.localPosition = new Vector3(head.localPosition.x, crouchYLocalPosition, head.localPosition.z);
 
-            // Set state.
-            if (!IsCrouched)
+                // Lower the capsule collider.
+                if (capsuleCollider)
+                {
+                    capsuleCollider.height = defaultCapsuleColliderHeight - (defaultHeadYLocalPosition - crouchYLocalPosition);
+                    capsuleCollider.center = Vector3.up * capsuleCollider.height * .5f;
+                }
+
+                // Set state.
+                if (!IsCrouched)
+                {
+                    IsCrouched = true;
+                    CrouchStart?.Invoke();
+                }
+            }
+            else if (IsCrouched)
             {
-                IsCrouched = true;
-                CrouchStart?.Invoke();
-            }
-        }
-        else if (IsCrouched)
-        {
-            // Reset the head to its default y local position.
-            head.localPosition = new Vector3(head.localPosition.x, defaultHeadYLocalPosition, head.localPosition.z);
+                // Reset the head to its default y local position.
+                head.localPosition = new Vector3(head.localPosition.x, defaultHeadYLocalPosition, head.localPosition.z);
 
-            // Reset the capsule collider's position.
-            if (capsuleCollider)
-            {
-                capsuleCollider.height = defaultCapsuleColliderHeight;
-                capsuleCollider.center = Vector3.up * capsuleCollider.height * .5f;
-            }
+                // Reset the capsule collider's position.
+                if (capsuleCollider)
+                {
+                    capsuleCollider.height = defaultCapsuleColliderHeight;
+                    capsuleCollider.center = Vector3.up * capsuleCollider.height * .5f;
+                }
 
-            // Reset state.
-            IsCrouched = false;
-            CrouchEnd?.Invoke();
+                // Reset state.
+                IsCrouched = false;
+                CrouchEnd?.Invoke();
+            }
         }
     }
 
